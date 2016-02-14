@@ -15,13 +15,16 @@ class Movie
   end
 
   def self.display_movie_data_by_name(movie_name)
-    response = Net::HTTP.get_response("omdbapi.com","/?t=#{movie_name}&format=json")
+    formatted_name = movie_name.gsub(" ", "+")
+    response = Net::HTTP.get_response("omdbapi.com","/?t=#{formatted_name}&format=json")
     movie_info = eval(response.body)
+    puts movie_info
   end
 
   def self.find_specific_movie_data_by_name(movie_name, movie_info)
+    formatted_name = movie_name.gsub(" ", "+")
     response = Net::HTTP.get_response("omdbapi.com","/?t=#{movie_name}&format=json")
     movie_info = eval(response.body)
-    movie_info[movie_info.capitaize.to_sym]
+    puts "#{movie_info.to_s}: #{movie_info[movie_info.capitalize.to_sym]}"
   end
 end
