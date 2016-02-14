@@ -12,9 +12,9 @@ describe User do
     end
   end
   describe '#add_movie_by_name' do 
-    let(:user1) { User.new("Jeff") }
-    let(:movie1) { User.new("Space Jam") }
-    let(:movie2) { User.new("The Chipmunks Movie") }
+    let(:user1) { User.new("Ian") }
+    let(:movie1) { Movie.new("Star Wars") }
+    let(:movie2) { Movie.new("Hackers") }
     it 'adds the movie to the user collection' do 
       user1.add_movie_by_name("Space Jam")
       user1.add_movie_by_name("The Chipmunks Movie")
@@ -22,9 +22,9 @@ describe User do
     end
   end
   describe '#delete_movie_by_name' do 
-    let(:user1) { User.new("Jeff") }
-    let(:movie1) { User.new("Space Jam") }
-    let(:movie2) { User.new("The Chipmunks Movie") }
+    let(:user1) { User.new("Deniz") }
+    let(:movie1) { Movie.new("Frozen") }
+    let(:movie2) { Movie.new("The Chipmunks Movie") }
     it 'removes a movie from the user collection' do
       user1.delete_movie_by_name("The Chipmunks Movie")
       expect(user1.movies).not_to include("The Chipmunks Movie")

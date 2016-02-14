@@ -1,21 +1,24 @@
 require_relative '../config/environment.rb'
 
-puts "----------------------------"
+puts "\n----------------------------"
 puts "-------- YOUR MOVIE --------"
 puts "-------- COLLECTION --------"
 puts "--------- MANAGER ----------"
 puts "----------------------------"
-puts "\n What action would you like to take?"
-puts "Your options are: add, lookup, update, and delete"
+puts "\nEnter your name to create your profile."
+user_name = gets.chomp
+current_user = User.new(user_name)
+puts "\nWelcome #{current_user.name}"
+puts "\nWhat action would you like to take?"
+puts "Your options are: add, lookup, update, delete, and exit"
 action = gets.chomp
 
-case action
-  when 'add'
+while action != "exit"
+  case action
+    when 'add'
+    when 'lookup'
+    when 'update'
+    when 'delete'
   end
-  when 'lookup'
-  end
-  when 'update'
-  end
-  when 'delete'
-  end
+  exit(1)
 end
