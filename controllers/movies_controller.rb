@@ -1,7 +1,7 @@
 class MoviesController
   def prompt_movie_name
-    puts "\n Great. What movie would you like to act on?"
-    gets.chomp
+    view = MovieNewView.new 
+    view.render
   end
 
   def lookup(movie_name)

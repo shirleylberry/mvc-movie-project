@@ -25,8 +25,8 @@ while action != "exit"
     puts "Your options are: add, remove, lookup, and exit"
     action = gets.chomp
     exit if action == 'exit'
-    puts "\n Great. What movie would you like to act on?"
-    movie_name = gets.chomp
+    controller = MoviesController.new
+    movie_name = controller.prompt_movie_name
     case action
       when 'add'
         current_user.add_movie_by_name(movie_name)
