@@ -5,4 +5,11 @@ class User
     @name = name
     @movies = []
   end
+
+  def add_movie_by_name(movie)
+    @movies << "#{movie}" #if movie is in movies.all
+  end
+
+  def delete_movie_by_name(movie)
+  end
 end

@@ -5,13 +5,24 @@ require 'pry'
 # response = Net::HTTP.get_response("omdbapi.com","/?t=inception&format=json")
 
 class Movie
-  attr_accessor :name
+  attr_accessor :name, :movie_data
+  @@all = []
+
+  def self.all
+    @@all
+  end
 
   def initialize(name)
     @name = name
+    movie_info = Movie.find_specific_movie_data_by_name(name)
+    return nil if movie_info.nil?
+ 
+    @movie_data =  {movie_info.fetch(:Title) => movie_info}
+    @@all << self
   end
 
-  def find_movie_by_name(movie_name)
+  def self.find_movie_by_name(movie_name)
+    self.all
   end
 
   def self.display_movie_data_by_name(movie_name)
@@ -21,10 +32,15 @@ class Movie
     puts movie_info
   end
 
-  def self.find_specific_movie_data_by_name(movie_name, movie_info)
+  def self.find_specific_movie_data_by_name(movie_name)
+    # formatted_name = movie_name.gsub(" ", "+")
+    # response = Net::HTTP.get_response("omdbapi.com","/?t=#{movie_name}&format=json")
+    # movie_info = eval(response.body)
+    # puts "#{movie_info.to_s}: #{movie_info[movie_info.capitalize.to_sym]}"
+    # movie_info
     formatted_name = movie_name.gsub(" ", "+")
-    response = Net::HTTP.get_response("omdbapi.com","/?t=#{movie_name}&format=json")
+    response = Net::HTTP.get_response("omdbapi.com","/?t=#{formatted_name}&format=json")
     movie_info = eval(response.body)
-    puts "#{movie_info.to_s}: #{movie_info[movie_info.capitalize.to_sym]}"
+    movie_info
   end
 end

@@ -7,7 +7,7 @@ describe Movie do
       expect(movie.name).to eq("Space Jam")
     end
     it 'adds the movie to the @@all array' do 
-      expect(Movie.all).to include("Space Jam")
+      expect(Movie.all).to include(:movie)
     end
   end
   describe '.find_movie_by_name' do 

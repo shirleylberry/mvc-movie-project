@@ -4,6 +4,8 @@ def reload!
   load('../config/environment.rb')
 end
 
+#binding.pry
+
 puts "\n----------------------------"
 puts "-------- YOUR MOVIE --------"
 puts "-------- COLLECTION --------"
@@ -23,6 +25,8 @@ while action != "exit"
   movie_name = gets.chomp
   case action
     when 'add'
+      current_user.add_movie_by_name(movie_name)
+      #handle case where movie is not found
     when 'lookup'
       Movie.display_movie_data_by_name(movie_name)
     when 'update'

@@ -18,7 +18,8 @@ describe User do
     it 'adds the movie to the user collection' do 
       user1.add_movie_by_name("Space Jam")
       user1.add_movie_by_name("The Chipmunks Movie")
-      expect(user1.movies).to eq(["Space Jam", "The Chipmunks Movie"])
+      expect(user1.movies).to include("Space Jam")
+      expect(user1.movies).to include("The Chipmunks Movie")
     end
   end
   describe '#delete_movie_by_name' do 
