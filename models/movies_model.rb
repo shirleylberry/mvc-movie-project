@@ -6,7 +6,7 @@ require 'pry'
 
 class Movie
   attr_accessor :name, :movie_data
-  @@all = []
+  @@all = Hash.new
 
   def self.all
     @@all
@@ -17,12 +17,12 @@ class Movie
     movie_info = Movie.find_specific_movie_data_by_name(name)
     return nil if movie_info.nil?
  
-    @movie_data =  {movie_info.fetch(:Title) => movie_info}
-    @@all << self
+    @movie_data =  movie_info
+    @@all[movie_info.fetch(:Title)] = movie_info
   end
 
   def self.find_movie_by_name(movie_name)
-    self.all
+    self.all.fetch(movie_name)
   end
 
   def self.display_movie_data_by_name(movie_name)

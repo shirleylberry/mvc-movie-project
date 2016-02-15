@@ -11,5 +11,6 @@ class User
   end
 
   def delete_movie_by_name(movie)
+    @movies.delete(movie)
   end
 end
