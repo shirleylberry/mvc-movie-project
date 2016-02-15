@@ -37,12 +37,11 @@ class User
   end
 
 
-  danny=User.new("Danny")
-  danny.add_movie_by_name("American Beauty")
-  danny.add_movie_by_name("Silence of the Lambs")
-  danny.favorite_movie=("American Beauty")
-  danny.email="danielgilberg@gmail.com"
-
+  # danny=User.new("Danny")
+  # danny.add_movie_by_name("American Beauty")
+  # danny.add_movie_by_name("Silence of the Lambs")
+  # danny.favorite_movie=("American Beauty")
+  # danny.email="danielgilberg@gmail.com"
 
   # binding.pry
 
