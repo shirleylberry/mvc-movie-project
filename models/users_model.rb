@@ -40,7 +40,7 @@ class User
     genre_percents = Genre.all.each_with_object({}) do |genre, genre_w_percents|
       genre_w_percents[genre] = genre.get_genre_percentage(movies)
     end
-    genre_percents.sort_by {|key, value| value}.first.first
+    genre_percents.sort_by {|key, value| value}.first.first.name
   end
 
 
