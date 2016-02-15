@@ -17,21 +17,28 @@ current_user = User.new(user_name)
 puts "\nWelcome #{current_user.name}"
 action = ""
 while action != "exit"
-  puts "\nWhat action would you like to take?"
-  puts "Your options are: add, lookup, update, delete, and exit"
-  action = gets.chomp
-  exit if action == 'exit'
-  puts "\n Great. What movie would you like to act on?"
-  movie_name = gets.chomp
-  case action
-    when 'add'
-      current_user.add_movie_by_name(movie_name)
-      #handle case where movie is not found
-    when 'lookup'
-      puts "Would you like to find all the data for a movie or specific data?"
-      what_data = gets.chomp
-      Movie.display_movie_data_by_name(current_user, movie_name)
-    when 'update'
-    when 'delete'
+  puts "\n Would you like to work on your profile or your collection?"
+  prof_or_coll = gets.chomp
+  case prof_or_coll
+  when 'collection'
+    puts "\nWhat action would you like to take?"
+    puts "Your options are: add, lookup, update, delete, and exit"
+    action = gets.chomp
+    exit if action == 'exit'
+    puts "\n Great. What movie would you like to act on?"
+    movie_name = gets.chomp
+    case action
+      when 'add'
+        current_user.add_movie_by_name(movie_name)
+        #handle case where movie is not found
+      when 'lookup'
+        puts "Would you like to find all the data for a movie or specific data?"
+        what_data = gets.chomp
+        Movie.display_movie_data_by_name(current_user, movie_name)
+      when 'update'
+      when 'delete'
+    end
+  when 'profile'
+    puts "Now we'll work on your profile."
   end
 end

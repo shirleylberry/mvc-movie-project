@@ -23,7 +23,7 @@ class Movie
 
   def self.find_movie_by_name(user, movie_name)
     movie = current_user.all.find{|movie| movie.name == movie_name}
-    movie.nil? ? movie_data = find_movie_data_by_name(movie_name) : movie
+    movie.nil? ? nil : movie
   end
 
   def self.display_movie_data_by_name(movie_name)
@@ -40,14 +40,8 @@ class Movie
   end
 
   def self.find_movie_data_by_name(movie_name)
-    # formatted_name = movie_name.gsub(" ", "+")
-    # response = Net::HTTP.get_response("omdbapi.com","/?t=#{movie_name}&format=json")
-    # movie_info = eval(response.body)
-    # puts "#{movie_info.to_s}: #{movie_info[movie_info.capitalize.to_sym]}"
-    # movie_info
     formatted_name = movie_name.gsub(" ", "+")
     response = Net::HTTP.get_response("omdbapi.com","/?t=#{formatted_name}&format=json")
     movie_info = eval(response.body)
-    movie_info
   end
 end
