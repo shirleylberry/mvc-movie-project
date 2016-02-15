@@ -9,8 +9,9 @@ class User
     @movies = []
   end
 
-  def add_movie_by_name(movie)
-    @movies << movie #if movie is in movies.all
+  def add_movie_by_name(movie_name)
+    movie = add_or_find_movie_by_name(movie_name)
+    @movies << movie.name
   end
 
   def delete_movie_by_name(movie)
