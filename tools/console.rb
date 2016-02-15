@@ -35,15 +35,18 @@ while action != "exit"
     case action
       when 'add'
         #should be handeled by users controller#add which then calls ../views/user/add#render (that file just outputs line 34)
-        current_user.add_movie_by_name(movie_name)
-        puts "Added #{movie_name} to your collection."
+        controller=UserController.new
+        controller.add(current_user, movie_name)
+        # puts "Added #{movie_name} to your collection."
       when 'lookup'
         controller = MoviesController.new
         controller.display(movie_name)
       when 'remove'
         #should be handeled by users controller#remove which then calls ../views/user/remove#render (that file just outputs line 41)
-        current_user.delete_movie_by_name(movie_name)
-        puts "Removed #{movie_name} from your collection."
+        controller=UserController.new
+        controller.remove(current_user, movie_name)
+        # current_user.delete_movie_by_name(movie_name)
+        # puts "Removed #{movie_name} from your collection."
     end
   when 'profile'
     controller=UserController.new

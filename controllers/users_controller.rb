@@ -7,4 +7,17 @@ class UserController
   end
 
 
+  def add(current_user, movie_name)
+    current_user.add_movie_by_name(movie_name)
+    view=UserAddView.new
+    view.render(movie_name)
+  end
+
+  def remove(current_user, movie_name)
+    current_user.delete_movie_by_name(movie_name)
+    view=UserRemoveView.new
+    view.render(movie_name)
+  end
+
+
 end
