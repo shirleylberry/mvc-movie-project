@@ -28,7 +28,9 @@ while action != "exit"
       current_user.add_movie_by_name(movie_name)
       #handle case where movie is not found
     when 'lookup'
-      Movie.display_movie_data_by_name(movie_name)
+      puts "Would you like to find all the data for a movie or specific data?"
+      what_data = gets.chomp
+      Movie.display_movie_data_by_name(current_user, movie_name)
     when 'update'
     when 'delete'
   end
