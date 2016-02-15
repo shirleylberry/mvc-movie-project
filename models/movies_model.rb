@@ -2,8 +2,6 @@ require "net/http"
 require "uri"
 require 'pry'
 
-# response = Net::HTTP.get_response("omdbapi.com","/?t=inception&format=json")
-
 class Movie
   attr_accessor :name, :movie_data
 
@@ -23,6 +21,8 @@ class Movie
   end
 
   # this is the interface the user model uses to create a new movie
+  # it finds a movie by name if it exists in Movie.all already
+  # and if it doesn't exist yet it creates a new movie object
   def self.add_or_find_movie_by_name(movie_name)
     self.find_movie_by_name(movie_name).nil? ? movie = Movie.new(movie_name) : movie
   end
@@ -34,24 +34,13 @@ class Movie
   end
 
   def self.find_movie_by_name(movie_name)
-    movie = self.all.find do |movie_data| 
-      # binding.pry 
-      movie_data.first == movie_name
-    end
+    movie = self.all.find{|name, data| name == movie_name}
     movie.nil? ? nil : movie
   end
 
-  # this method 
   def self.display_movie_data_by_name(movie_name)
-    movie = self.find_movie_by_name(movie_name)
-    binding.pry
+    movie = self.add_or_find_movie_by_name(movie_name)
     movie_info = movie.movie_data
     puts movie_info
-  end
-
-  def self.display_specific_movie_data_by_name(movie_name, requested_data)
-    movie = self.find_movie_by_name(movie_name)
-    movie_info = movie.movie_data
-    puts "#{movie.name}, #{requested_data}: #{movie_info[requested_data.capitalize.to_sym]}"
   end
 end
