@@ -37,6 +37,7 @@ class Movie
     formatted_name = movie_name.gsub(" ", "+")
     response = Net::HTTP.get_response("omdbapi.com","/?t=#{formatted_name}&format=json")
     movie_info = eval(response.body)
+    movie_info
   end
 
   # checks if the movie is already in the @@all array
