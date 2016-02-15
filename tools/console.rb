@@ -47,7 +47,7 @@ while action != "exit"
     end
   when 'profile'
     controller=UserController.new
-    controller.start
+    action = controller.start
     case action
       when 'C'
         puts current_user.movies
