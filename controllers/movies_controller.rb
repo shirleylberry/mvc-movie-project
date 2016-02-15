@@ -13,6 +13,5 @@ class MoviesController
     movie = Movie.add_or_find_movie_by_name(movie_name)
     # binding.pry
     view.render(movie_name, movie.movie_data)
-    # Movie.display_movie_data_by_name(movie_name)
   end
 end

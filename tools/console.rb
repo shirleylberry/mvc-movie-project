@@ -22,6 +22,9 @@ current_user.favorite_movie = movie_name
 puts "Added #{movie_name} to your collection and set it as your favorite."
 action = ""
 while action != "exit"
+  user_controller=UserController.new
+  movie_controller = MoviesController.new
+  
   puts "\n Would you like to work on your profile or your collection?"
   prof_or_coll = gets.chomp
   case prof_or_coll
@@ -30,32 +33,22 @@ while action != "exit"
     puts "Your options are: add, remove, lookup, and exit"
     action = gets.chomp
     exit if action == 'exit'
-    controller = MoviesController.new
-    movie_name = controller.prompt_movie_name
+    movie_name = movie_controller.prompt_movie_name
     case action
       when 'add'
-        #should be handeled by users controller#add which then calls ../views/user/add#render (that file just outputs line 34)
-        controller=UserController.new
-        controller.add(current_user, movie_name)
-        # puts "Added #{movie_name} to your collection."
+        user_controller.add(current_user, movie_name)
       when 'lookup'
-        controller = MoviesController.new
-        controller.display(movie_name)
+        movie_controller.display(movie_name)
       when 'remove'
-        #should be handeled by users controller#remove which then calls ../views/user/remove#render (that file just outputs line 41)
-        controller=UserController.new
-        controller.remove(current_user, movie_name)
-        # current_user.delete_movie_by_name(movie_name)
-        # puts "Removed #{movie_name} from your collection."
+        user_controller.remove(current_user, movie_name)
     end
   when 'profile'
-    controller=UserController.new
-    action = controller.start
+    action = user_controller.start
     case action
       when 'C'
         puts current_user.movies
       when 'L'
-        puts Movie.find_movie_data_by_name(current_user.last_movie_added)
+        movie_controller.display(current_user.last_movie_added)
       when 'P'
         #should be handeld by users controller#get_profile
         puts current_user.view_profile
