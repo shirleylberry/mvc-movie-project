@@ -32,8 +32,8 @@ while action != "exit"
         current_user.add_movie_by_name(movie_name)
         puts "Added #{movie_name} to your collection."
       when 'lookup'
-        puts "Info about #{movie_name}:"
-        Movie.display_movie_data_by_name(movie_name)
+        controller = MoviesController.new
+        controller.display(movie_name)
       when 'remove'
         current_user.delete_movie_by_name(movie_name)
         puts "Removed #{movie_name} from your collection."
