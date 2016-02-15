@@ -22,7 +22,7 @@ while action != "exit"
   case prof_or_coll
   when 'collection'
     puts "\nWhat action would you like to take?"
-    puts "Your options are: add, lookup, update, delete, and exit"
+    puts "Your options are: add, remove, lookup, and exit"
     action = gets.chomp
     exit if action == 'exit'
     puts "\n Great. What movie would you like to act on?"
@@ -30,15 +30,24 @@ while action != "exit"
     case action
       when 'add'
         current_user.add_movie_by_name(movie_name)
-        #handle case where movie is not found
       when 'lookup'
-        puts "Would you like to find all the data for a movie or specific data?"
-        what_data = gets.chomp
-        Movie.display_movie_data_by_name(current_user, movie_name)
-      when 'update'
-      when 'delete'
+        Movie.display_movie_data_by_name(movie_name)
+      when 'remove'
+        current_user.delete_movie_by_name(movie_name)
     end
   when 'profile'
     puts "Now we'll work on your profile."
+    puts "View collection(C), view the last movie you added (L), view your profile (P), or find your favorite genre (G)?"
+    action = gets.chomp
+    case action
+      when 'C'
+        current_user.movies
+      when 'L'
+        Movies.find_movie_data_by_name(current_user.movies.last)
+      when 'P'
+        current_user.get_profile
+      when 'G'
+        current_user.get_fav_genre
+    end
   end
 end
