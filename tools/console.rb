@@ -29,12 +29,14 @@ while action != "exit"
     movie_name = controller.prompt_movie_name
     case action
       when 'add'
+        #should be handeled by users controller#add which then calls ../views/user/add#render (that file just outputs line 34)
         current_user.add_movie_by_name(movie_name)
         puts "Added #{movie_name} to your collection."
       when 'lookup'
         controller = MoviesController.new
         controller.display(movie_name)
       when 'remove'
+        #should be handeled by users controller#remove which then calls ../views/user/remove#render (that file just outputs line 41)
         current_user.delete_movie_by_name(movie_name)
         puts "Removed #{movie_name} from your collection."
     end
@@ -48,8 +50,10 @@ while action != "exit"
       when 'L'
         puts Movie.find_movie_data_by_name(current_user.last_movie_added)
       when 'P'
+        #should be handeld by users controller#get_profile
         puts current_user.get_profile
       when 'G'
+        #should be handeled by users controller#favgenre
         puts current_user.get_fav_genre
     end
   end
