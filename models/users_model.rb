@@ -44,6 +44,12 @@ class User
     sorted_genres.last.first.name
   end
 
+  def view_profile
+    puts "Name: #{@name}"
+    puts "Favorite Movie: #{@favorite_movie}"
+    puts "Favorite Genre: #{self.get_fav_genre}"
+  end
+
 
   # danny=User.new("Danny")
   # danny.add_movie_by_name("American Beauty")
