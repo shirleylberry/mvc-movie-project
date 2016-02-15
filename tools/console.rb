@@ -16,7 +16,6 @@ user_name = gets.chomp
 current_user = User.new(user_name)
 puts "\nWelcome #{current_user.name}"
 action = ""
-binding.pry
 while action != "exit"
   puts "\n Would you like to work on your profile or your collection?"
   prof_or_coll = gets.chomp
