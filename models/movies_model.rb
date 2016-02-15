@@ -19,7 +19,7 @@ class Movie
     @movie_data =  movie_info
     first_genre = @movie_data.fetch(:Genre).split(", ").first
     genre = Genre.all.find {|genre| genre.name == first_genre}
-    genre.nil? ? movie_genre = Genre.new(movie_genre) : movie_genre = genre
+    genre.nil? ? movie_genre = Genre.new(first_genre) : movie_genre = genre
     movie_genre.add_movie_by_name(name)
     @@all << self
     # binding.pry
