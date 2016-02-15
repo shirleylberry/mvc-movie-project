@@ -20,8 +20,8 @@ class User
 
   def favorite_movie=(movie)
     @favorite_movie= @movies.find do |movie_name|
-                        movie_name==movie
-                    end
+      movie_name==movie
+    end
   end
 
   def last_movie_added
@@ -34,6 +34,13 @@ class User
 
   def sort_collection
     @movies.sort 
+  end
+
+  def get_fav_genre
+    genre_percents = Genre.all.each_with_object({}) do |genre, genre_w_percents|
+      genre_w_percents[genre] = genre.get_genre_percentage(movies)
+    end
+    genre_percents.sort_by {|key, value| value}.first.first
   end
 
 

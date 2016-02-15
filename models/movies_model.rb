@@ -3,7 +3,7 @@ require "uri"
 require 'pry'
 
 class Movie
-  attr_accessor :name, :movie_data
+  attr_accessor :name, :movie_data, :movie_genre
 
   @@all = []
 
@@ -17,7 +17,10 @@ class Movie
     return nil if movie_info.nil?
     
     @movie_data =  movie_info
-    # binding.pry
+    first_genre = @movie_data.fetch(:Genre).split(", ").first
+    genre = Genre.all.find {|genre| genre.name == first_genre}
+    genre.nil? ? movie_genre = Genre.new(movie_genre) : movie_genre = genre
+    movie_genre.add_movie_by_name(name)
     @@all << self
     # binding.pry
   end

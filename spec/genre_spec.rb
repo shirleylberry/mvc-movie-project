@@ -40,7 +40,7 @@ describe Genre do
     let(:user1) {User.new("Ian")}
     let(:movie1) { Movie.new("Frozen") }
     let(:movie2) { Movie.new("The Chipmunks Movie") }
-    it 'removes a movie from the genre list' do
+    it 'calculates genre percentage for user given genre' do
       genre1.add_movie_by_name("Frozen")
       genre1.add_movie_by_name("The Chipmunks Movie")
       user1.add_movie_by_name("Frozen")

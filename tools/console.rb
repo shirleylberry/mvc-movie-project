@@ -30,10 +30,13 @@ while action != "exit"
     case action
       when 'add'
         current_user.add_movie_by_name(movie_name)
+        puts "Added #{movie_name} to your collection."
       when 'lookup'
+        puts "Info about #{movie_name}:"
         Movie.display_movie_data_by_name(movie_name)
       when 'remove'
         current_user.delete_movie_by_name(movie_name)
+        puts "Removed #{movie_name} from your collection."
     end
   when 'profile'
     puts "Now we'll work on your profile."
@@ -41,13 +44,14 @@ while action != "exit"
     action = gets.chomp
     case action
       when 'C'
-        current_user.movies
+        puts current_user.movies
       when 'L'
-        Movies.find_movie_data_by_name(current_user.movies.last)
+        puts Movie.find_movie_data_by_name(current_user.last_movie_added)
       when 'P'
-        current_user.get_profile
+        puts current_user.get_profile
       when 'G'
-        current_user.get_fav_genre
+        puts current_user.get_fav_genre
     end
   end
+  "---------------------------"
 end
