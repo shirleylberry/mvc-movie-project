@@ -51,7 +51,7 @@ while action != "exit"
         puts Movie.find_movie_data_by_name(current_user.last_movie_added)
       when 'P'
         #should be handeld by users controller#get_profile
-        puts current_user.get_profile
+        puts current_user.view_profile
       when 'G'
         #should be handeled by users controller#favgenre
         puts current_user.get_fav_genre

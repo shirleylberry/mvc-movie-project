@@ -48,6 +48,7 @@ class User
     puts "Name: #{@name}"
     puts "Favorite Movie: #{@favorite_movie}"
     puts "Favorite Genre: #{self.get_fav_genre}"
+    puts "Movie Count: #{self.movies.size}"
   end
 
 
