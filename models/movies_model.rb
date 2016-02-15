@@ -34,7 +34,10 @@ class Movie
   end
 
   def self.find_movie_by_name(movie_name)
-    movie = self.all.find{|movie| movie.name == movie_name}
+    movie = self.all.find do |movie_data| 
+      # binding.pry 
+      movie_data.first == movie_name
+    end
     movie.nil? ? nil : movie
   end
 

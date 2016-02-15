@@ -10,7 +10,7 @@ class User
   end
 
   def add_movie_by_name(movie_name)
-    movie = add_or_find_movie_by_name(movie_name)
+    movie = Movie.add_or_find_movie_by_name(movie_name)
     @movies << movie.name
   end
 
@@ -44,7 +44,7 @@ class User
   danny.email="danielgilberg@gmail.com"
 
 
-  binding.pry
+  # binding.pry
 
   puts "hi"
 

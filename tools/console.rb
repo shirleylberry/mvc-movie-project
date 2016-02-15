@@ -30,6 +30,7 @@ while action != "exit"
     case action
       when 'add'
         current_user.add_movie_by_name(movie_name)
+        binding.pry
       when 'lookup'
         Movie.display_movie_data_by_name(movie_name)
       when 'remove'
