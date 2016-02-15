@@ -46,9 +46,8 @@ while action != "exit"
         puts "Removed #{movie_name} from your collection."
     end
   when 'profile'
-    puts "Now we'll work on your profile."
-    puts "View collection(C), view the last movie you added (L), view your profile (P), or find your favorite genre (G)?"
-    action = gets.chomp
+    controller=UserController.new
+    controller.start
     case action
       when 'C'
         puts current_user.movies
