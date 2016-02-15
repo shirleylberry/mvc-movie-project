@@ -18,8 +18,8 @@ describe User do
     it 'adds the movie to the user collection' do 
       user1.add_movie_by_name("Princess Diaries")
       user1.add_movie_by_name("Clerks")
-      expect(user1.movies).to include(movie1)
-      expect(user1.movies).to include(movie2)
+      expect(user1.movies).to include("Princess Diaries")
+      expect(user1.movies).to include("Clerks")
       expect(user1.movies.size).to eq(2)
     end
   end
