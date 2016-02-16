@@ -6,15 +6,8 @@ end
 
 #binding.pry
 
-puts "\n----------------------------"
-puts "-------- YOUR MOVIE --------"
-puts "-------- COLLECTION --------"
-puts "--------- MANAGER ----------"
-puts "----------------------------"
-puts "\nEnter your name to create your profile."
-user_name = gets.chomp
-current_user = User.new(user_name)
-puts "\nWelcome #{current_user.name}"
+user_controller = UserController.new
+current_user = user_controller.new_user
 while(current_user.movies.size == 0)
   puts "\nEnter your favorite movie name."
   movie_name = gets.chomp.capitalize

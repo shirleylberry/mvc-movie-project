@@ -6,6 +6,14 @@ class UserController
     action = gets.chomp
   end
 
+  def new_user
+    view = UserCreateView.new
+    user_name = view.render
+    current_user = User.new(user_name)
+    view = UserWelcomeView.new
+    view.render(current_user)
+    current_user
+  end
 
   def add(current_user, movie_name)
     collection = current_user.add_movie_by_name(movie_name)

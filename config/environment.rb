@@ -14,6 +14,8 @@ require_relative '../views/user/new.rb'
 require_relative '../views/user/remove.rb'
 require_relative '../views/user/profile.rb'
 require_relative '../views/user/prompt.rb'
+require_relative '../views/user/create.rb'
+require_relative '../views/user/welcome.rb'
 #controllers
 # require_relative '../controllers/FILENAME.rb'
 require_relative '../controllers/movies_controller.rb'
