@@ -11,7 +11,7 @@ class User
 
   def add_movie_by_name(movie_name)
     movie = Movie.add_or_find_movie_by_name(movie_name)
-    @movies << movie.name
+    @movies << movie.name unless movie.nil?
   end
 
   def delete_movie_by_name(movie)

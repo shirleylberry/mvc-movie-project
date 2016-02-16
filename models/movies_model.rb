@@ -13,9 +13,7 @@ class Movie
 
   def initialize(name)
     @name = name
-    movie_info = Movie.find_movie_data_by_name(name)
-    return nil if movie_info.nil?
-    
+    movie_info = Movie.find_movie_data_by_name(name)      
     @movie_data =  movie_info
     first_genre = @movie_data.fetch(:Genre).split(", ").first
     genre = Genre.all.find {|genre| genre.name == first_genre}
@@ -30,7 +28,14 @@ class Movie
   # and if it doesn't exist yet it creates a new movie object
   def self.add_or_find_movie_by_name(movie_name)
     movie = self.find_movie_by_name(movie_name)
-    movie.nil? ? movie = Movie.new(movie_name) : movie
+    movie_data = find_movie_data_by_name(movie_name)
+    if movie.nil? && movie_data.fetch(:Response) != "False"
+      movie = Movie.new(movie_name)
+    elsif movie_data.fetch(:Response) == "False"
+      puts "That movie could not be created."
+    else
+      movie
+    end
   end
 
   def self.find_movie_data_by_name(movie_name)
