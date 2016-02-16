@@ -9,12 +9,9 @@ end
 user_controller = UserController.new
 current_user = user_controller.new_user
 while(current_user.movies.size == 0)
-  puts "\nEnter your favorite movie name."
-  movie_name = gets.chomp.capitalize
-  current_user.add_movie_by_name(movie_name)
-  current_user.favorite_movie = movie_name
+  user_controller = UserController.new
+  user_controller.favorite(current_user)
 end
-puts "Added #{movie_name} to your collection and set it as your favorite."
 action = ""
 while action != "exit"
   user_controller=UserController.new

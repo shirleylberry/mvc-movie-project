@@ -60,7 +60,5 @@ class User
 
   # binding.pry
 
-  puts "hi"
-
 
 end
