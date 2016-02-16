@@ -29,16 +29,13 @@ class UserController
     # binding.pry
     return if collection.nil?
 
-    file_contents = File.read('/Users/ShirleyB/Flatiron/mvc-movie-project/views/templates/user/add_user.html.erb')
+    file_contents = File.read('views/templates/user/add_user.html.erb')
     template = ERB.new(file_contents)
     formatted_file_contents = template.result(binding)
     # binding.pry
-    new_file_path = '/Users/ShirleyB/Flatiron/mvc-movie-project/views/output/user/add_user.html'
-    new_file = File.write(new_file_path, formatted_file_contents)
-    `open -a 'Google Chrome' '/Users/ShirleyB/Flatiron/mvc-movie-project/views/output/user/add_user.html'`
-    # binding.pry
-    # view=UserAddView.new
-    # view.render(movie_name)
+    output_file_path = 'views/output/user/add_user.html'
+    new_file = File.write(output_file_path, formatted_file_contents)
+    `open -a 'Google Chrome' #{output_file_path}`
   end
 
   def remove(current_user, movie_name)
@@ -59,5 +56,7 @@ class UserController
     should_add == "Y" ? add(current_user, movie_name) : puts("#{movie_name} was not added to your collection.")
   end
 
+  # def render(file)
+    # file_name = 
 
 end
