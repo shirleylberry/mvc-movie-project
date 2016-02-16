@@ -30,9 +30,7 @@ while action != "exit"
   exit if prof_or_coll == 'exit'
   case prof_or_coll
   when 'collection'
-    puts "\nWhat action would you like to take?"
-    puts "Your options are: add, remove, lookup, and exit"
-    action = gets.chomp
+    action = movie_controller.start
     exit if action == 'exit'
     movie_name = movie_controller.prompt_movie_name.capitalize
     case action
