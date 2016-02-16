@@ -2,7 +2,7 @@ class UserController
 
   def start
     puts "Now we'll work on your profile."
-    puts "View collection(C), view the last movie you added (L), view your profile (P), or find your favorite genre (G)?"
+    puts "View collection(C), view the last movie you added (L), view your profile (P), find your favorite genre (G) or exit(E)?"
     action = gets.chomp
   end
 
@@ -22,6 +22,13 @@ class UserController
   def profile(current_user)
     view = UserProfileView.new
     view.render(current_user)
+  end
+
+  def add_if_not_added(current_user, movie_name)
+    return nil if current_user.movies.include?(movie_name)
+    view = UserPromptView.new
+    should_add = view.render(movie_name)
+    should_add == "Y" ? add(current_user, movie_name) : puts("#{movie_name} was not added to your collection.")
   end
 
 

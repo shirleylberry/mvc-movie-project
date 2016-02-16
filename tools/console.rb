@@ -25,8 +25,9 @@ while action != "exit"
   user_controller=UserController.new
   movie_controller = MoviesController.new
   
-  puts "\n Would you like to work on your profile or your collection?"
+  puts "\n Would you like to work on your profile or your collection or exit?"
   prof_or_coll = gets.chomp
+  exit if prof_or_coll == 'exit'
   case prof_or_coll
   when 'collection'
     puts "\nWhat action would you like to take?"
@@ -39,12 +40,15 @@ while action != "exit"
         user_controller.add(current_user, movie_name)
       when 'lookup'
         movie_controller.display(movie_name)
+        user_controller.add_if_not_added(current_user, movie_name)
       when 'remove'
         user_controller.remove(current_user, movie_name)
     end
   when 'profile'
     action = user_controller.start
     case action
+      when 'E'
+        exit
       when 'C'
         puts current_user.movies
       when 'L'
