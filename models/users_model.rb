@@ -11,29 +11,29 @@ class User
 
   def add_movie_by_name(movie_name)
     movie = Movie.add_or_find_movie_by_name(movie_name)
-    @movies << movie.name unless movie.nil?
+    self.movies << movie.name unless movie.nil?
   end
 
   def delete_movie_by_name(movie)
-    @movies.delete(movie)
+    self.movies.delete(movie)
   end
 
   def favorite_movie=(movie)
-    @favorite_movie= @movies.find do |movie_name|
+    @favorite_movie= self.movies.find do |movie_name|
       movie_name==movie
     end
   end
 
   def last_movie_added
-    @movies.last
+    self.movies.last
   end
 
   def movie_count
-    @movies.count 
+    self.movies.count 
   end
 
   def sort_collection
-    @movies.sort 
+    self.movies.sort 
   end
 
   def get_fav_genre
@@ -45,8 +45,8 @@ class User
   end
 
   def view_profile
-    puts "Name: #{@name}"
-    puts "Favorite Movie: #{@favorite_movie}"
+    puts "Name: #{self.name}"
+    puts "Favorite Movie: #{self.favorite_movie}"
     puts "Favorite Genre: #{self.get_fav_genre}"
     puts "Movie Count: #{self.movies.size}"
   end

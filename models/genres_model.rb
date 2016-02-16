@@ -13,11 +13,11 @@ class Genre
   end
 
   def add_movie_by_name(movie)
-    @movies << "#{movie}" 
+    self.movies << "#{movie}" 
   end
 
   def delete_movie_by_name(movie)
-    @movies.delete(movie)
+    self.movies.delete(movie)
   end
 
   def get_genre_percentage(user_movie_list)
