@@ -28,7 +28,9 @@ while action != "exit"
           movie_name = movie_controller.prompt_movie_name.capitalize
           user_controller.add(current_user, movie_name)
         when 'lookup'
-          user_controller.add_if_not_added(current_user, movie_name) unless movie_controller.display(movie_name).nil?
+          movie_name = movie_controller.prompt_movie_name.capitalize
+          movie_controller.display(movie_name)
+          user_controller.add_if_not_added(current_user, movie_name) unless movie_name.nil?
         when 'remove'
           movie_name = movie_controller.prompt_movie_name.capitalize
           user_controller.remove(current_user, movie_name)
