@@ -16,7 +16,7 @@ user_name = gets.chomp
 current_user = User.new(user_name)
 puts "\nWelcome #{current_user.name}"
 puts "\nEnter your favorite movie name."
-movie_name = gets.chomp
+movie_name = gets.chomp.capitalize
 current_user.add_movie_by_name(movie_name)
 current_user.favorite_movie = movie_name
 puts "Added #{movie_name} to your collection and set it as your favorite."
@@ -34,7 +34,7 @@ while action != "exit"
     puts "Your options are: add, remove, lookup, and exit"
     action = gets.chomp
     exit if action == 'exit'
-    movie_name = movie_controller.prompt_movie_name
+    movie_name = movie_controller.prompt_movie_name.capitalize
     case action
       when 'add'
         user_controller.add(current_user, movie_name)
