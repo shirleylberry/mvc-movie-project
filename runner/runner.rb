@@ -46,5 +46,4 @@ while action != "exit"
           puts current_user.get_fav_genre
       end
   end
-  "---------------------------"
 end
