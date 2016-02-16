@@ -4,6 +4,6 @@ def reload!
   load('../config/environment.rb')
 end
 
-binding.pry
+# binding.pry
 
-puts "done"
+# puts "done"

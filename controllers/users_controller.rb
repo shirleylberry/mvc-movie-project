@@ -28,8 +28,17 @@ class UserController
     collection = current_user.add_movie_by_name(movie_name)
     # binding.pry
     return if collection.nil?
-    view=UserAddView.new
-    view.render(movie_name)
+
+    file_contents = File.read('/Users/ShirleyB/Flatiron/mvc-movie-project/views/templates/user/add_user.html.erb')
+    template = ERB.new(file_contents)
+    formatted_file_contents = template.result(binding)
+    # binding.pry
+    new_file_path = '/Users/ShirleyB/Flatiron/mvc-movie-project/views/output/user/add_user.html'
+    new_file = File.write(new_file_path, formatted_file_contents)
+    `open -a 'Google Chrome' '/Users/ShirleyB/Flatiron/mvc-movie-project/views/output/user/add_user.html'`
+    # binding.pry
+    # view=UserAddView.new
+    # view.render(movie_name)
   end
 
   def remove(current_user, movie_name)
