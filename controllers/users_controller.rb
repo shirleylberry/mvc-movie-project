@@ -15,6 +15,15 @@ class UserController
     current_user
   end
 
+  def favorite(current_user)
+    view = UserFavoriteView.new
+    movie_name = view.render
+    current_user.add_movie_by_name(movie_name)
+    current_user.favorite_movie = movie_name
+    view = UserFavoriteAddedView.new
+    view.render(movie_name)
+  end
+
   def add(current_user, movie_name)
     collection = current_user.add_movie_by_name(movie_name)
     # binding.pry
