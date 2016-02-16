@@ -15,9 +15,11 @@ class MoviesController
   end
 
   def display(movie_name)
-    view = MovieDisplayView.new
+
     movie = Movie.add_or_find_movie_by_name(movie_name)
     # binding.pry
-    view.render(movie_name, movie.movie_data)
+    return if movie.nil?
+    view = MovieDisplayView.new
+    view.render(movie_name, movie.movie_data) unless movie.nil?
   end
 end

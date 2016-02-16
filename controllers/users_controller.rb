@@ -10,8 +10,9 @@ class UserController
   def add(current_user, movie_name)
     collection = current_user.add_movie_by_name(movie_name)
     # binding.pry
+    return if collection.nil?
     view=UserAddView.new
-    collection.nil? ? view.render(movie_name, was_created = "False") : view.render(movie_name)
+    view.render(movie_name)
   end
 
   def remove(current_user, movie_name)
