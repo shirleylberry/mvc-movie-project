@@ -25,17 +25,19 @@ class UserController
   end
 
   def add(current_user, movie_name)
+    @movie_name = movie_name
     collection = current_user.add_movie_by_name(movie_name)
     # binding.pry
     return if collection.nil?
 
-    file_contents = File.read('views/templates/user/add_user.html.erb')
-    template = ERB.new(file_contents)
-    formatted_file_contents = template.result(binding)
-    # binding.pry
-    output_file_path = 'views/output/user/add_user.html'
-    new_file = File.write(output_file_path, formatted_file_contents)
-    `open -a 'Google Chrome' #{output_file_path}`
+    # file_contents = File.read('views/templates/user/add_user.html.erb')
+    # template = ERB.new(file_contents)
+    # formatted_file_contents = template.result(binding)
+    # # binding.pry
+    # output_file_path = 'views/output/user/add_user.html'
+    # new_file = File.write(output_file_path, formatted_file_contents)
+    # `open -a 'Google Chrome' #{output_file_path}`
+    render('user/add_user')
   end
 
   def remove(current_user, movie_name)
@@ -56,7 +58,21 @@ class UserController
     should_add == "Y" ? add(current_user, movie_name) : puts("#{movie_name} was not added to your collection.")
   end
 
-  # def render(file)
-    # file_name = 
+  def render(file)
+    file_name = "views/templates/#{file}.html.erb"
+    file_contents = File.read(file_name)
+    template = ERB.new(file_contents)
+    formatted_file_contents = template.result(binding)
+    # binding.pry
+    output_file = "views/output/#{file}.html"
+    new_file = File.write(output_file, formatted_file_contents)
+    `open -a 'Google Chrome' #{output_file}`
+  end
+
+    
 
 end
+
+
+
+
