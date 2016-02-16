@@ -19,5 +19,10 @@ class UserController
     view.render(movie_name)
   end
 
+  def profile(current_user)
+    view = UserProfileView.new
+    view.render(current_user)
+  end
+
 
 end
