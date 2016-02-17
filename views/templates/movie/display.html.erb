@@ -1,0 +1,6 @@
+<p>Info about <%= @movie_name %>:</p>
+<ul>
+<% @movie_data.each do |key, value| %>
+  <li> <%= key.upcase %> : <%= value %> </li>
+<% end %>
+</ul>
