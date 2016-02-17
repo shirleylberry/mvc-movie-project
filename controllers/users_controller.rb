@@ -28,8 +28,18 @@ class UserController
     collection = current_user.add_movie_by_name(movie_name)
     # binding.pry
     return if collection.nil?
-    view=UserAddView.new
-    view.render(movie_name)
+    @movie_name = movie_name
+    render("user/add")
+    # view=UserAddView.new
+    # view.render(movie_name)
+  end
+
+  def render(file_path)
+    content = File.read("views/templates/#{file_path}.html.erb")
+    template = ERB.new(content)
+    output = template.result(binding)
+    File.write("views/outputs/#{file_path}.html", output)
+    `open -a "Google Chrome" "views/outputs/#{file_path}.html"`
   end
 
   def remove(current_user, movie_name)
@@ -39,8 +49,8 @@ class UserController
   end
 
   def profile(current_user)
-    view = UserProfileView.new
-    view.render(current_user)
+    @current_user = current_user
+    render("user/profile")
   end
 
   def add_if_not_added(current_user, movie_name)

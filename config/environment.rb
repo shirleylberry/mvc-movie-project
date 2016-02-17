@@ -1,5 +1,5 @@
 require 'pry'
-require 'ERB'
+require 'erb'
 
 #models
 require_relative '../models/movies_model.rb'
