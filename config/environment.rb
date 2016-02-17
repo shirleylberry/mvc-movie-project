@@ -23,3 +23,5 @@ require_relative '../views/user/favoriteadded.rb'
 # require_relative '../controllers/FILENAME.rb'
 require_relative '../controllers/movies_controller.rb'
 require_relative '../controllers/users_controller.rb'
+
+# require_relative '../views/templates/user/add_user.html.erb'
