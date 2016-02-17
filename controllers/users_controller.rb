@@ -42,8 +42,8 @@ class UserController
 
   def remove(current_user, movie_name)
     current_user.delete_movie_by_name(movie_name)
-    view=UserRemoveView.new
-    view.render(movie_name)
+    @movie_name = movie_name
+    render("user/remove")
   end
 
   def profile(current_user)
