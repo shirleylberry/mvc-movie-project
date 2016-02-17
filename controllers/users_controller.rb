@@ -9,10 +9,9 @@ class UserController
   def new_user
     view = UserCreateView.new
     user_name = view.render
-    current_user = User.new(user_name)
-    view = UserWelcomeView.new
-    view.render(current_user)
-    current_user
+    @current_user = User.new(user_name)
+    render("user/welcome")
+    @current_user
   end
 
   def favorite(current_user)
